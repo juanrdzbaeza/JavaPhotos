@@ -29,18 +29,30 @@ public class LoginServlet extends HttpServlet {
 
         // Generar la respuesta
         PrintWriter out = response.getWriter();
-        out.println("<html><body>");
+
         if (isValidUser) {
             HttpSession session = request.getSession();
             session.setAttribute("username", username); // Guarda el usuario en la sesión
             response.sendRedirect("home.jsp");
         } else {
-            out.println("<h1>Login failed! Invalid username or password.</h1>");
-            out.println("<a href=\"index.jsp\">Back to the login</a>");
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Login Failed</title>");
+            out.println("<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css\" rel=\"stylesheet\">");
+            out.println("</head>");
+            out.println("<body class=\"bg-light d-flex justify-content-center align-items-center vh-100\">");
+            out.println("<div class=\"card p-4 shadow\" style=\"width: 22rem;\">");
+            out.println("<h1 class=\"text-center text-danger\">Login Failed</h1>");
+            out.println("<p class=\"text-center\">Invalid username or password.</p>");
+            out.println("<div class=\"text-center mt-3\">");
+            out.println("<a href=\"index.jsp\" class=\"btn btn-primary w-100\">Back to Login</a>");
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</body>");
+            out.println("</html>");
         }
-        out.println("</body></html>");
-
-
+        out.close();
     }
 
 }
