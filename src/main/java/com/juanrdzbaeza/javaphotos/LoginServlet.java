@@ -31,6 +31,8 @@ public class LoginServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
         if (isValidUser) {
+            HttpSession session = request.getSession();
+            session.setAttribute("username", username); // Guarda el usuario en la sesión
             response.sendRedirect("home.jsp");
         } else {
             out.println("<h1>Login failed! Invalid username or password.</h1>");
