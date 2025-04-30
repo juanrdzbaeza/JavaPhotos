@@ -26,16 +26,25 @@ public class DatabaseConnection {
     }
 
     private void initializeDatabase() {
-        String createTableSQL = "CREATE TABLE IF NOT EXISTS users ("
+        String createTableUsersSQL = "CREATE TABLE IF NOT EXISTS users ("
                 + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + "username TEXT NOT NULL UNIQUE , "
                 + "password TEXT NOT NULL "
                 + ");";
 
+        String createTablePhotosSQL = "CREATE TABLE IF NOT EXISTS photos ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "user_id INTEGER NOT NULL, "
+                + "name TEXT NOT NULL UNIQUE , "
+                + "data BLOB NOT NULL, "
+                + "FOREIGN KEY(user_id) REFERENCES users(id) "
+                + ");";
+
         try (Connection conn = DriverManager.getConnection(this.URL);
              Statement stmt = conn.createStatement()) {
 
-            stmt.execute(createTableSQL);
+            stmt.execute(createTableUsersSQL);
+            stmt.execute(createTablePhotosSQL);
             System.out.println("Database initialized successfully.");
 
         } catch (SQLException e) {
