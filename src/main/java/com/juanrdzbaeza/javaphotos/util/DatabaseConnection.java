@@ -9,9 +9,16 @@ import java.util.logging.Logger;
 
 public class DatabaseConnection {
 
-    private static final String DATABASE_PATH = "/home/jrodbae/Documents/IdeaProjects/JavaPhotos/JP.sqlite";
-    private static final String URL = "jdbc:sqlite:" + DATABASE_PATH;
+    // Path to the database file
+    public static String DATABASE_PATH;
 
+    static {
+        String userHome = System.getProperty("user.home");
+        DATABASE_PATH = userHome + "/Documents/IdeaProjects/JavaPhotos/JP.sqlite"; // Path to the database file must be assigned here
+    }
+
+
+    private static final String URL = "jdbc:sqlite:" + DATABASE_PATH;
 
     public DatabaseConnection() {
         // Constructor

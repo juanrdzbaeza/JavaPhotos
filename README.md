@@ -23,6 +23,23 @@ JavaPhotos is a simple example of a login and signup system implemented using JS
 - **SQLite**: Lightweight database for storing user data.
 - **Bootstrap**: For styling and responsive design.
 
+
+## Database File Configuration
+
+The application uses a SQLite database file to store user and photo data. The path to the database file is dynamically assigned at runtime based on the user's home directory. By default, the database file is located at:
+
+`<user_home>/Documents/IdeaProjects/JavaPhotos/JP.sqlite`
+
+This ensures that the database file is stored in a consistent location relative to the user's environment. If you need to customize the database path, you can modify the `DATABASE_PATH` variable in the `DatabaseConnection` class:
+
+```java
+String userHome = System.getProperty("user.home");
+DATABASE_PATH = userHome + "/Documents/IdeaProjects/JavaPhotos/JP.sqlite";
+```
+
+Alternatively, you can configure the database path using environment variables or other runtime parameters if needed.
+
+
 ## How to Run
 
 1. Clone the repository.
