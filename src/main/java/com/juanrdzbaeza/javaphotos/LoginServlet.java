@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
         if (isValidUser) {
             HttpSession session = request.getSession();
             session.setAttribute("username", username); // Guarda el usuario en la sesión
-            response.sendRedirect("home.jsp");
+            response.sendRedirect("home-servlet");
         } else {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
