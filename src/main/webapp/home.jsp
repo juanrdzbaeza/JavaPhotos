@@ -34,7 +34,15 @@
     </div>
 </nav>
 
-
+<div class="container-fluid mt-5">
+    <form action="home-servlet" method="post" enctype="multipart/form-data" class="mt-4">
+        <div class="mb-3">
+            <label for="photo" class="form-label">Upload Photo:</label>
+            <input type="file" id="photo" name="photo" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
 
 <!-- Bootstrap JS (optional) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
